@@ -1,0 +1,32 @@
+<div class="card card-primary">
+  <div class="card-body">
+    <div class="float-right">
+      <div class="btn-group">
+        <button (click)="addPin()">+Add Pin</button>
+      </div>
+      <div>
+        <button (click)="addCustomer()">+Add Customer</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Image</th>
+          <th scope="col">Collaboratory</th>
+          <th scope="col">Privacy</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of allData">
+        <tr>
+          <th>{{item.title}}</th>
+          <td><img [src]="item.file" alt=""></td>
+          <td>
+        <tr *ngFor="let cus of item.collaborators">{{cus}}</tr>
+        </td>
+        <td>{{item.privacy}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

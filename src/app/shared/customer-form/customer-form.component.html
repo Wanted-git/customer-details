@@ -1,0 +1,56 @@
+<div class="card card-primary justify-content-center">
+  <div class="card-body ">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+      <div class="row justify-content-center mb-2">
+        <label for="name"> Name <span class="text-red">*</span> </label> &nbsp;
+        <input type="text" class="form-control" id="name" placeholder="Enter Title" formControlName="name" />
+        <div
+          *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.errors && (registerForm.controls.name.dirty || registerForm.controls.name.touched)"
+          class="text-red">
+          <span *ngIf="registerForm.controls.name.hasError('required')">
+            Title is required
+          </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-2">
+        <label for="email"> Email <span class="text-red">*</span> </label> &nbsp;
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email" />
+        <div
+          *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.errors && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
+          class="text-red">
+          <span *ngIf="registerForm.controls.email.hasError('required')">
+            Email is required
+          </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-2">
+        <label for="region"> Region <span class="text-red">*</span> </label> &nbsp;
+        <ngx-select [items]="regionList" optionValueField="id" optionTextField="name" (select)="getCountry(registerForm.controls.region.value)" formControlName="region"></ngx-select>
+        <div
+          *ngIf="registerForm.controls.region.invalid && registerForm.controls.region.errors && (registerForm.controls.region.dirty || registerForm.controls.region.touched)"
+          class="text-red">
+          <span *ngIf="registerForm.controls.region.hasError('required')">
+            Region is required
+          </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-2">
+        <label for="country"> Country <span class="text-red">*</span> </label> &nbsp;
+        <ngx-select [items]="countryList" optionValueField="id" optionTextField="name"  formControlName="country"></ngx-select>
+        <div
+          *ngIf="registerForm.controls.country.invalid && registerForm.controls.country.errors && (registerForm.controls.country.dirty || registerForm.controls.country.touched)"
+          class="text-red">
+          <span *ngIf="registerForm.controls.country.hasError('required')">
+            Country is required
+          </span>
+        </div>
+      </div>
+      <div class="row justify-content-center mb-2">
+        <button type="submit" class="btn btn-default row justify-content-center">Add Customer</button>
+      </div>
+    </form>
+  </div>
+</div>
